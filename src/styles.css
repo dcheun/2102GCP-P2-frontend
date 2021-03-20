@@ -2,3 +2,42 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*************************** Navbar **************************/
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar .mat-form-field-wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+.mat-toolbar .mat-form-field-appearance-outline .mat-form-field-infix {
+  border: 0;
+  padding: 0;
+}
+
+.mat-toolbar .mat-focused .mat-form-field-outline {
+  border: 2px solid white;
+  border-radius: 0.3rem;
+}
+
+#nav-input-field {
+  width: 45%;
+}
+
+#nav-search-input {
+  padding-bottom: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+#nav-search-icon {
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  margin-right: 0.3rem;
+}
+
+.mat-grid-tile .mat-figure {
+  flex-direction: column;
+}

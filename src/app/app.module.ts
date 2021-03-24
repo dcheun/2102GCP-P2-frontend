@@ -12,9 +12,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { CardComponent } from './card/card.component';
+import { RatingComponent } from './rating/rating.component';
+import {MatCardModule } from '@angular/material/card';
+import { RateCourseComponent } from './rate-course/rate-course.component'
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, CardComponent, RatingComponent, RateCourseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +29,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

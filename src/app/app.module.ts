@@ -21,8 +21,8 @@ import { CardComponent } from './card/card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { RateCourseComponent } from './rate-course/rate-course.component';
-import { RatingComponent } from './rating/rating.component';
+import { RateCourseComponent } from './components/rate-course/rate-course.component';
+import { RatingComponent } from './components/rating/rating.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 

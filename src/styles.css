@@ -1,9 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*************************** Material UI Theme **************************/
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+/*************************** Fonts **************************/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@400;600;900&family=Playfair+Display:wght@400;500;800&family=Poppins&display=swap');
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-dancing: 'Dancing Script', cursive;
+  --font-playfair: 'Playfair Display', serif;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background: #303030;
+  color: #fff;
+  /* height: 150vh; */
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+.font-dancing {
+  font-family: var(--font-dancing);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
 
 /*************************** Navbar **************************/
+.app-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 1;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -40,4 +81,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-grid-tile .mat-figure {
   flex-direction: column;
+}
+
+.app-container {
+  /* margin-top: 64px; */
 }

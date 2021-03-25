@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="signin-logo signin-logo-online font-montserrat fw-bold">
+    Online
+    <mat-icon color="warn" class="signin-icon-school">school</mat-icon>
+  </div>
+  <div class="signin-logo font-dancing">
+    Education
+  </div>
+
+  <mat-card class="signin-card">
+    <mat-card-content>
+      <h3>Sign In</h3>
+    </mat-card-content>
+
+    <hr />
+
+    <mat-card-content class="signin-content">
+      <mat-form-field appearance="fill" color="warn">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" [(ngModel)]="email">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="warn">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="pw">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div *ngIf="errMsg" class="alert alert-danger" role="alert">{{errMsg}}</div>
+
+      <button mat-flat-button color="warn" class="signin-btn" (click)="signin()">Sign In</button>
+    </mat-card-content>
+
+    <hr />
+
+    <mat-card-content class="signup-content">
+      <h3>New User</h3>
+      <button mat-flat-button color="warn" class="signin-btn" routerLink="/signup">Sign Up</button>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+<ngx-loading [show]="loading"></ngx-loading>

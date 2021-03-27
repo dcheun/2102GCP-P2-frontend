@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: center;
   max-width: 25rem;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
 }
 
 .signin-card {

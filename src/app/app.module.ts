@@ -13,8 +13,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxLoadingModule } from 'ngx-loading';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
@@ -43,15 +45,23 @@ import { SignupComponent } from './components/signup/signup.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatCardModule,
     MatFormFieldModule,
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
+    MatSelectModule,
     MatInputModule,
     MatToolbarModule,
-    HttpClientModule,
     NgxLoadingModule.forRoot({}),
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      newestOnTop: false,
+      maxOpened: 4,
+    }),
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

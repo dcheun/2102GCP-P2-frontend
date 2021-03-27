@@ -1,1 +1,88 @@
-<p>signup works!</p>
+<div class="container">
+
+  <div class="signin-logo signin-logo-online font-montserrat fw-bold">
+    Online
+    <mat-icon color="warn" class="signin-icon-school">school</mat-icon>
+  </div>
+  <div class="signin-logo font-dancing">
+    Education
+  </div>
+
+  <mat-card class="signin-card">
+    <mat-card-content>
+      <h2>Registration</h2>
+    </mat-card-content>
+    <hr />
+
+    <mat-card-content class="signin-content">
+
+      <mat-form-field appearance="fill" color="warn"
+        [ngClass]="{'mat-form-field-invalid':inputErrMsgs.fName !== '' && inputFieldVals.fName === ''}">
+        <mat-label>First Name</mat-label>
+        <input id="zzz" matInput type="text" [(ngModel)]="inputFieldVals.fName" required>
+        <mat-icon matSuffix>person_add</mat-icon>
+        <div *ngIf="inputErrMsgs.fName && !inputFieldVals.fName" class="mat-error">First Name is
+          <strong>required</strong></div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="warn"
+        [ngClass]="{'mat-form-field-invalid':inputErrMsgs.lName && !inputFieldVals.lName}">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" [(ngModel)]="inputFieldVals.lName" required>
+        <mat-icon matSuffix>person_add</mat-icon>
+        <div *ngIf="inputErrMsgs.lName && !inputFieldVals.lName" class="mat-error">Last Name is
+          <strong>required</strong></div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="warn"
+        [ngClass]="{'mat-form-field-invalid':inputErrMsgs.email && !inputFieldVals.email}">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="inputFieldVals.email" required>
+        <mat-icon matSuffix>alternate_email</mat-icon>
+        <div *ngIf="inputErrMsgs.email && !inputFieldVals.email" class="mat-error">Email is
+          <strong>required</strong></div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="warn"
+        [ngClass]="{'mat-form-field-invalid':inputErrMsgs.pw && !inputFieldVals.pw}">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="inputFieldVals.pw" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <div *ngIf="inputErrMsgs.pw && !inputFieldVals.pw" class="mat-error">Password is
+          <strong>required</strong></div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="warn"
+        [ngClass]="{'mat-form-field-invalid':inputErrMsgs.confirmPW && !inputFieldVals.confirmPW}">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hideConfirm ? 'password' : 'text'" [(ngModel)]="inputFieldVals.confirmPW" required>
+        <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hideConfirm">
+          <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <div *ngIf="inputErrMsgs.confirmPW && !inputFieldVals.confirmPW" class="mat-error">Confirm Password is
+          <strong>required</strong></div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="warn">
+        <mat-label>Account Type</mat-label>
+        <mat-select [(ngModel)]="inputFieldVals.accountType" required>
+          <mat-option value="2">Student</mat-option>
+          <mat-option value="1">Instructor</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="warn" class="signup-btn" (click)="signup()">
+        + Register
+      </button>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+<ngx-loading [show]="loading"></ngx-loading>

@@ -1,19 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from '../models/course';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  BASE_URL: string = 'http://localhost:8080';
+  BASE_URL: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private sharedService: SharedService, private http: HttpClient) {
+    this.BASE_URL = sharedService.BASE_URL;
+  }
 
   // Create
-  async createCourse(course: Course): Promise<Course> {
+  async createCourse(course: Course, token: string): Promise<Course> {
     course = await this.http
-      .post<Course>(`${this.BASE_URL}/courses`, course)
+      .post<Course>(`${this.BASE_URL}/courses`, course, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .toPromise();
     return course;
   }
@@ -34,17 +41,24 @@ export class CourseService {
   }
 
   // Update
-  async updateCourse(course: Course): Promise<Course> {
+  async updateCourse(course: Course, token: string): Promise<Course> {
     course = await this.http
-      .put<Course>(`${this.BASE_URL}/courses/${course.id}`, course)
+      .put<Course>(`${this.BASE_URL}/courses/${course.id}`, course, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .toPromise();
     return course;
   }
 
   // Delete
-  async deleteCourseById(id: number): Promise<boolean> {
+  async deleteCourseById(id: number, token: string): Promise<boolean> {
     const res: string = await this.http
       .request('DELETE', `${this.BASE_URL}/courses/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         responseType: 'text',
       })
       .toPromise();

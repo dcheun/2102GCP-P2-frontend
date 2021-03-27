@@ -41,4 +41,20 @@ export class DashboardComponent implements OnInit {
       this.loading = false;
     }
   }
+
+  async updateUser(): Promise<void> {
+    let token: string | null = this.authService.getToken();
+    if (!this.user || !token) {
+      return;
+    }
+
+    this.loading = true;
+    try {
+      this.user = await this.appUserService.updateAppUser(this.user, token);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.loading = false;
+    }
+  }
 }

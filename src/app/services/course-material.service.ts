@@ -1,21 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CourseMaterial } from '../models/course-material';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseMaterialService {
-  BASE_URL: string = 'http://localhost:8080';
+  BASE_URL: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private sharedService: SharedService, private http: HttpClient) {
+    this.BASE_URL = sharedService.BASE_URL;
+  }
 
   // Create
   async createCourseMaterial(
-    courseMaterial: CourseMaterial
+    courseMaterial: CourseMaterial,
+    token: string
   ): Promise<CourseMaterial> {
     courseMaterial = await this.http
-      .post<CourseMaterial>(`${this.BASE_URL}/coursematerials`, courseMaterial)
+      .post<CourseMaterial>(
+        `${this.BASE_URL}/coursematerials`,
+        courseMaterial,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .toPromise();
     return courseMaterial;
   }
@@ -37,21 +49,30 @@ export class CourseMaterialService {
 
   // Update
   async updateCourseMaterial(
-    courseMaterial: CourseMaterial
+    courseMaterial: CourseMaterial,
+    token: string
   ): Promise<CourseMaterial> {
     courseMaterial = await this.http
       .put<CourseMaterial>(
         `${this.BASE_URL}/coursematerials/${courseMaterial.id}`,
-        courseMaterial
+        courseMaterial,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .toPromise();
     return courseMaterial;
   }
 
   // Delete
-  async deleteCourseMaterialById(id: number): Promise<boolean> {
+  async deleteCourseMaterialById(id: number, token: string): Promise<boolean> {
     const res: string = await this.http
       .request('DELETE', `${this.BASE_URL}/coursematerials/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         responseType: 'text',
       })
       .toPromise();

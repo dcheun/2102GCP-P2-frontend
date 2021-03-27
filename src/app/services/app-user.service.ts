@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppUser } from '../models/app-user';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppUserService {
-  BASE_URL: string = 'http://localhost:8080';
+  BASE_URL: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private sharedService: SharedService, private http: HttpClient) {
+    this.BASE_URL = sharedService.BASE_URL;
+  }
 
   // Create
   async createAppUser(appUser: AppUser): Promise<AppUser> {
@@ -27,17 +30,24 @@ export class AppUserService {
   }
 
   // Update
-  async updateAppUser(appUser: AppUser): Promise<AppUser> {
+  async updateAppUser(appUser: AppUser, token: string): Promise<AppUser> {
     appUser = await this.http
-      .put<AppUser>(`${this.BASE_URL}/users/${appUser.id}`, appUser)
+      .put<AppUser>(`${this.BASE_URL}/users/${appUser.id}`, appUser, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .toPromise();
     return appUser;
   }
 
   // Delete
-  async deleteAppUserById(id: number): Promise<boolean> {
+  async deleteAppUserById(id: number, token: string): Promise<boolean> {
     const res: string = await this.http
       .request('DELETE', `${this.BASE_URL}/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         responseType: 'text',
       })
       .toPromise();

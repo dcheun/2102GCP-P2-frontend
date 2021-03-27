@@ -83,6 +83,7 @@ body {
   flex-direction: column;
 }
 
-/* .app-container {
-  margin-top: 64px;
-} */
+.app-container {
+  padding-top: 64px;
+  height: calc(100vh - 64px);
+}

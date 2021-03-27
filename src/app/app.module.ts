@@ -27,6 +27,14 @@ import { RateCourseComponent } from './components/rate-course/rate-course.compon
 import { RatingComponent } from './components/rating/rating.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {CarouselComponent} from './components/carousel/carousel.component';
+import{CourseTableComponent} from './components/course-table/course-table.component'
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
+import{MaterialTableComponent} from './components/material-table/material-table.component';
+import { YouTubePlayerModule } from "@angular/youtube-player";
+
+
 
 @NgModule({
   declarations: [
@@ -39,6 +47,9 @@ import { SignupComponent } from './components/signup/signup.component';
     SignupComponent,
     NotFoundComponent,
     DashboardComponent,
+    CarouselComponent,
+    CourseTableComponent,
+    MaterialTableComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +73,10 @@ import { SignupComponent } from './components/signup/signup.component';
       newestOnTop: false,
       maxOpened: 4,
     }),
+    MatSidenavModule,
+    PdfViewerModule,
+    YouTubePlayerModule 
+
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

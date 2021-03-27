@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
+
 export class DashboardComponent implements OnInit {
   user: AppUser | null = null;
   userId: number | null = null;
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async loadUser(): Promise<void> {
+
     if (!this.userId) {
       return;
     }

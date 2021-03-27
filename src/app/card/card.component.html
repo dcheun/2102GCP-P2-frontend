@@ -1,10 +1,10 @@
-<mat-card class="example-card">
+<mat-card class="example-card" style="height: 350px;">
     <mat-card-header>
       <!-- <div mat-card-avatar class="example-header-image"></div>  -->
    </mat-card-header> 
    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-   <mat-card-title>Course Name</mat-card-title>
-   <mat-card-subtitle>Instructor name</mat-card-subtitle>
+   <mat-card-title>{{course? course.name : courseName }}</mat-card-title>
+   <mat-card-subtitle>{{instructorName}}</mat-card-subtitle>
  
    <mat-card-footer>
      <mat-card-subtitle><app-rating [rating]='courseRating' [totalRating]="courseTotalRating"></app-rating></mat-card-subtitle>

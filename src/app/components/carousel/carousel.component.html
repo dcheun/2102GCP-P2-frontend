@@ -1,67 +1,54 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
-style="padding-top: 150px; " >
-    <div class="carousel-inner" style="background-color:chocolate" id="carouselId">
+<div id={{carouselTarget}} class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
 
-   
-      <div class="carousel-item ">
+    <ng-container *appTimesPE3="cardPropsArr.length; let i = index">
+      <div class="carousel-item {{i === 0 && 'active'}}">
+        <div class="d-flex justify-content-evenly pt-2 pb-2">
 
-        <div> 
-
-          <div class="row" style="padding-left: 200px;">
-            <div class="column"  >
-                <app-card [course]="courses[0]" [courseRating]="2" [courseTotalRating]="100" [instructorName]="'Danny'"></app-card>
-
-            </div>
-            <div class="column" >
-                <app-card [course]="courses[1]" [courseRating]="5" [courseTotalRating]="3332"></app-card>
-            </div>
-            <div class="column" >
-                <app-card></app-card>
-            </div>
+          <div class="card-container">
+            <app-card [props]="cardPropsArr[i]"></app-card>
           </div>
+
+          <div class="card-container" *ngIf="i + 1 < cardPropsArr.length">
+            <app-card [props]="cardPropsArr[i + 1]"></app-card>
+          </div>
+
+          <div class="card-container" *ngIf="i + 2 < cardPropsArr.length">
+            <app-card [props]="cardPropsArr[i + 2]"></app-card>
+          </div>
+
+        </div>
       </div>
-      </div>
+    </ng-container>
 
-      <div class="carousel-item active">
-        <div class="row" style="padding-left: 200px;">
-          <div class="column">
-              <app-card></app-card>
-          </div>
-          <div class="column">
-              <app-card></app-card>
-          </div>
-          <div class="column">
-              <app-card></app-card>
-          </div>
+    <!--
+    <div class="carousel-item active">
+      <div class="d-flex justify-content-evenly pt-2 pb-2">
+
+        <div class="card-container">
+          <app-card></app-card>
         </div>
 
-      
+        <div class="card-container">
+          <app-card></app-card>
+        </div>
+
+        <div class="card-container">
+          <app-card></app-card>
+        </div>
+
       </div>
-    
-      <div class="carousel-item ">
-          <div class="row"  style="padding-left: 200px;">
-            <div class="column" >
-                <app-card></app-card>
-            </div>
-            <div class="column">
-                <app-card></app-card>
-            </div>
-            <div class="column">
-                <app-card></app-card>
-            </div>
-          </div> 
-     </div>
-    
-   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+    </div>
+  -->
+
+    <button class="carousel-control-prev" type="button" [attr.data-bs-target]="carouselBsTarget" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+    <button class="carousel-control-next" type="button" [attr.data-bs-target]="carouselBsTarget" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
 
   </div>
-
- 
-
+</div>

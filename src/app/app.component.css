@@ -1,4 +1,4 @@
-.mat-toolbar.mat-primary{
+.mat-toolbar.mat-primary {
     position: fixed;
     top: 0;
     right: 0;
@@ -11,7 +11,7 @@
     overflow: auto;
     padding-left: 10px;
     padding-right: 10px;
-    height: 100%;    
+    height: 100%;
 }
   
 .sidenav {
@@ -35,4 +35,8 @@
 
 .filler-content {
     padding: 60px;
+}
+
+.content-container {
+    position: absolute;
 }

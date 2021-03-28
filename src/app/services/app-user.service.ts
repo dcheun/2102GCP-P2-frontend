@@ -29,6 +29,13 @@ export class AppUserService {
     return appUser;
   }
 
+  async getAllAppUsers(): Promise<AppUser[]> {
+    const appUsers = await this.http
+      .get<AppUser[]>(`${this.BASE_URL}/users`)
+      .toPromise();
+    return appUsers;
+  }
+
   // Update
   async updateAppUser(appUser: AppUser, token: string): Promise<AppUser> {
     appUser = await this.http

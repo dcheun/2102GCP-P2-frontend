@@ -1,0 +1,42 @@
+mat-toolbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 2;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-greeting, .nav-signin-link, .nav-register-link {
+  font-weight: normal;
+  font-size: 1rem;
+  color:rgba(255, 255, 255, 0.85);
+  margin-right: 2rem;
+}
+
+/*************** Sidenav *****************/
+
+.main-container {
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  width: 100%;
+}
+
+.sidenav {
+  width: 13rem;
+  padding: 1.5rem;
+  background-color: rgba(228, 228, 228, 0.85);
+  /* background-color: rgba(82, 81, 81, 0.55); */
+  /* color: rgba(0, 0, 0, 0.87) */
+  color: white;
+}
+

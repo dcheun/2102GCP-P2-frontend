@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from 'src/app/services/store.service';
 import { AppUser } from '../../models/app-user';
-import { AppUserService } from '../../services/app-user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,14 +8,15 @@ import { AppUserService } from '../../services/app-user.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private appUserService: AppUserService) {}
+  authUser: AppUser | null = null;
+
+  constructor(private storeService: StoreService) {}
 
   ngOnInit(): void {
-    // this.loadData();
+    this.storeService.authUserSubject.subscribe({
+      next: (v) => (this.authUser = v),
+    });
   }
 
-  async loadData() {
-    const appUser = await this.appUserService.getAppUserById(6);
-    console.log(appUser);
-  }
+  async loadData() {}
 }

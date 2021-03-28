@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { TimesPE3Directive } from './directives/times-pe3.directive';
+
 import { SharedService } from './services/shared.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,10 +18,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxLoadingModule } from 'ngx-loading';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ToastrModule } from 'ngx-toastr';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './components/card/card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -28,28 +32,34 @@ import { RatingComponent } from './components/rating/rating.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {CarouselComponent} from './components/carousel/carousel.component';
-import{CourseTableComponent} from './components/course-table/course-table.component'
-import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
-import{MaterialTableComponent} from './components/material-table/material-table.component';
-import { YouTubePlayerModule } from "@angular/youtube-player";
-
-
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { CourseTableComponent } from './components/course-table/course-table.component';
+import { MaterialTableComponent } from './components/material-table/material-table.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { StoreService } from './services/store.service';
+import { AppUserService } from './services/app-user.service';
+import { CourseService } from './services/course.service';
+import { CourseMaterialService } from './services/course-material.service';
+import { RatingService } from './services/rating.service';
+import { TimesDirective } from './directives/times.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    RatingComponent,
-    RateCourseComponent,
-    NavbarComponent,
-    SigninComponent,
-    SignupComponent,
-    NotFoundComponent,
-    DashboardComponent,
     CarouselComponent,
     CourseTableComponent,
-    MaterialTableComponent
+    DashboardComponent,
+    MaterialTableComponent,
+    NavbarComponent,
+    NotFoundComponent,
+    RatingComponent,
+    RateCourseComponent,
+    SigninComponent,
+    SignupComponent,
+    TimesPE3Directive,
+    SidenavComponent,
+    TimesDirective,
   ],
   imports: [
     BrowserModule,
@@ -63,9 +73,11 @@ import { YouTubePlayerModule } from "@angular/youtube-player";
     MatGridListModule,
     MatIconModule,
     MatSelectModule,
+    MatSidenavModule,
     MatInputModule,
     MatToolbarModule,
     NgxLoadingModule.forRoot({}),
+    PdfViewerModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-right',
@@ -73,12 +85,16 @@ import { YouTubePlayerModule } from "@angular/youtube-player";
       newestOnTop: false,
       maxOpened: 4,
     }),
-    MatSidenavModule,
-    PdfViewerModule,
-    YouTubePlayerModule 
-
+    YouTubePlayerModule,
   ],
-  providers: [SharedService],
+  providers: [
+    SharedService,
+    AppUserService,
+    CourseService,
+    CourseMaterialService,
+    RatingService,
+    StoreService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

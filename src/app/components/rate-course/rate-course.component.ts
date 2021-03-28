@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-rate-course',
   templateUrl: './rate-course.component.html',
-  styleUrls: ['./rate-course.component.css']
+  styleUrls: ['./rate-course.component.css'],
+  
 })
 export class RateCourseComponent implements OnInit {
 
   isRate:boolean[]=[false,false,false,false,false]
-
+  //@Output() rated
   rate=0;
 
   isRated1:boolean=this.isRate[0]

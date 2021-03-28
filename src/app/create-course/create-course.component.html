@@ -1,0 +1,46 @@
+<div class=body>
+  <hr>
+<form #courseForm ="ngForm" (ngSubmit)="addCourse(courseForm.value)"class="example-form courseform"[class.courseformdisplay]="displayCourse">
+  <h3 style="text-align: center;">Create Course</h3>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name of the course"ngModel name="name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Write a short description"ngModel name="description"></textarea>
+    </mat-form-field>
+    <div class="example-button-row">
+        <button mat-button>Save</button>  
+      </div>
+  </form>
+  
+
+  <form #materialForm ="ngForm"(ngSubmit)="addCourseMaterial(materialForm.value)"class="example-form materialform" [class.matformdisplay]="displayMaterial">
+    <h3>Add Course Materials</h3>
+    <h3>{{courseName}}</h3>
+    <mat-form-field appearance="fill"class="example-full-width">
+        <mat-label>Material Description</mat-label>
+        <textarea matInput ngModel name="description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill"class="example-full-width">
+        <mat-label>Material Type</mat-label>
+        <mat-select ngModel name="materialType">
+          <mat-option value="video">Video</mat-option>
+          <mat-option value="document">Document</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+    <div class="example-button-row">
+        <button mat-button color="accent">Save</button> 
+    </div>
+  </form>
+</div>
+<div class="materiallist"[class.displaymateriallist]="displayMaterialList">
+  <h4 class="listtitle">Added Course Materials</h4>
+  <ul>
+    <li *ngFor="let material of courseMaterial">{{material.materialType+": "+material.description}}</li>
+  </ul>
+</div>
+<!-- <app-card [course]="course"></app-card> -->
+  

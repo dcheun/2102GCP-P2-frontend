@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedService } from './services/shared.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +19,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxLoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ngx-toastr';
 
-import { AppComponent } from './app.component';
+
+import { AddmaterialComponent } from './create-course/create-course.component';
+import { ViewChild } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -27,6 +30,9 @@ import { RateCourseComponent } from './components/rate-course/rate-course.compon
 import { RatingComponent } from './components/rating/rating.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +45,8 @@ import { SignupComponent } from './components/signup/signup.component';
     SignupComponent,
     NotFoundComponent,
     DashboardComponent,
+    AddmaterialComponent,
+    EditCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,6 @@ import { SignupComponent } from './components/signup/signup.component';
     MatSelectModule,
     MatInputModule,
     MatToolbarModule,
-    NgxLoadingModule.forRoot({}),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-right',
@@ -62,6 +69,9 @@ import { SignupComponent } from './components/signup/signup.component';
       newestOnTop: false,
       maxOpened: 4,
     }),
+    HttpClientModule,
+    NgxLoadingModule.forRoot({}),
+    MatListModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-rate-course',
@@ -9,7 +10,8 @@ export class RateCourseComponent implements OnInit {
 
   isRate:boolean[]=[false,false,false,false,false]
 
-  rate=0;
+  @Input()rate:number=0;
+  @Output()rateChange = new EventEmitter<number>();
 
   isRated1:boolean=this.isRate[0]
   isRated2:boolean=this.isRate[1]
@@ -36,6 +38,7 @@ export class RateCourseComponent implements OnInit {
     this.isRated4=this.isRate[3]
     this.isRated5=this.isRate[4]
     this.rate=ratenum;
+    this.rateChange.emit(this.rate)
    
  }
 

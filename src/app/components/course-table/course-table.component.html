@@ -1,84 +1,60 @@
-<!-- 
-<div style="padding-left: 20%;padding-right: 20%">
-<mat-card style="background-color: aliceblue; color: black;width: 100%; padding-left: 80px;height:600px;font-size: 25px;">
-    
-    <mat-card-title>HomePage</mat-card-title>
-    <form action="">
-    <label for="courseName"><h2>Courses Name:</h2>&nbsp;&nbsp;&nbsp;
-    </label>2021 Web Development Course<p>
-        2021 Web Development Course
-
-    </p>
-    <mat-card-content>
-        <h1>2021 Web Development Course</h1>
-    </mat-card-content>
-    <mat-card-content>
-        <h1>2021 Web Development Course</h1>
-    </mat-card-content>
-    <mat-card-content>
-        <h1>2021 Web Development Course</h1>
-    </mat-card-content>
-</form>
-  </mat-card>   
-</div> -->
 <div style="padding-left: 20%;padding-right: 20%; padding-top: 3%;padding-bottom: 7%;">
-<div class='card' style="background-color:darkcyan">
+  <div class='card' style="background-color:darkcyan">
     <div class='card-body'>
       <div class='row'>
         <div class='col-md-8'>
           <div class='row' style="padding-left: 250px; text-align: center;">
             <mat-card-header>
-                <!-- <div mat-card-avatar class="example-header-image"></div>  -->
-             </mat-card-header> 
-             <img mat-card-image src="https://www.reliablesoft.net/wp-content/uploads/2019/11/best-free-seo-courses.jpg" alt="Photo of a Shiba Inu"><br>
-             <br>
-             <mat-card-title></mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="imgURL" alt="Photo of course"><br>
+            <br>
+            <mat-card-title></mat-card-title>
 
-             <mat-card-title style="padding-top: 50px;font-size: 2.5em;font-family: 'Staatliches', cursive;">{{courseName}}</mat-card-title>
-             <mat-card-subtitle style="font-size: 1.5em;padding-top: 20px;font-family: 'Staatliches', cursive;">Instructed By: {{instructorfName}} {{instructorlName}}</mat-card-subtitle>
-           
-             <mat-card-footer>
-               <mat-card-subtitle></mat-card-subtitle>
-             </mat-card-footer>
-             <hr>
-             <br>
-             <hr>
+            <mat-card-title style="padding-top: 50px;font-size: 2.5em;font-family: 'Staatliches', cursive;">
+              {{course?.name || ''}}</mat-card-title>
+            <mat-card-subtitle style="font-size: 1.5em;padding-top: 20px;font-family: 'Staatliches', cursive;">
+              Instructed By: {{instructor?.fName || ''}} {{instructor?.lName || ''}}</mat-card-subtitle>
+
+            <mat-card-footer>
+              <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-footer>
+            <hr>
+            <br>
+            <hr>
           </div><br>
-          
-         
+
           <div class='row' style="padding-left:100px;font-family: 'Staatliches', cursive;">
-             <h2 style="color:black; font-family: 'Staatliches', cursive;"><b><u>Course Description</u></b></h2>
-             <summary style="color:black">{{description}}</summary>
-            <summary  style="color:black">Be able to build ANY website you want.
-                Craft a portfolio of websites to apply for junior developer jobs.
-                Build fully-fledged websites and web apps for your startup or business.
-                Work as a freelance web developer.
-                Master backend development with Node
-                Master frontend development with React
-                Learn the latest frameworks and technologies, including Javascript ES6, Bootstrap 4, MongoDB.</summary>
-                <summary  style="color:black">Be able to build ANY website you want.
-                    Craft a portfolio of websites to apply for junior developer jobs.
-                    Build fully-fledged websites and web apps for your startup or business.
-                    Work as a freelance web developer.
-                    Master backend development with Node
-                    Master frontend development with React
-                    Learn the latest frameworks and technologies, including Javascript ES6, Bootstrap 4, MongoDB.</summary>
+            <h2 style="color:black; font-family: 'Staatliches', cursive;"><b><u>Course Description</u></b></h2>
+            <summary style="color:black">{{course?.description || ''}}</summary>
+            <summary style="color:black">Be able to build ANY website you want.
+              Craft a portfolio of websites to apply for junior developer jobs.
+              Build fully-fledged websites and web apps for your startup or business.
+              Work as a freelance web developer.
+              Master backend development with Node
+              Master frontend development with React
+              Learn the latest frameworks and technologies, including Javascript ES6, Bootstrap 4, MongoDB.
+            </summary>
+            <summary style="color:black">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque veritatis quam natus, nesciunt neque a
+              numquam tempore odio vitae laboriosam suscipit at quisquam doloremque nobis eligendi cupiditate minima
+              inventore officiis. Optio ex, deleniti magnam sequi eligendi numquam, eum labore consequatur possimus
+              voluptas esse nisi quaerat incidunt ea laboriosam blanditiis assumenda!
+            </summary>
           </div>
-          
+
         </div>
-  
+
         <div class='col-md-4'>
-          <img class='center-block img-responsive'
-               >
+          <img class='center-block img-responsive'>
         </div>
       </div>
     </div>
-</div>
-    <div class='card-footer' style="padding-left: 700px;">
-      <button class='btn btn-outline-secondary'
-              style='width:125px;'routerLink="/signin">
-              Sign In/Enroll
-      </button>
-    </div>
   </div>
+  <div class='card-footer' style="padding-left: 700px;">
+    <button class='btn btn-outline-secondary' style='width:125px;' (click)="enroll()">
+      Sign In/Enroll
+    </button>
+  </div>
+</div>
 
+<ngx-loading [show]="loading"></ngx-loading>

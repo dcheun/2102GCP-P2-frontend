@@ -1,3 +1,76 @@
 .container {
   padding-bottom: 5rem;
 }
+
+.jumbotron {
+  height: calc(100vh * 0.3);
+  background-size: cover;
+  margin-bottom: 2rem;
+}
+
+.headline {
+  height: 100%;
+}
+
+.headline-1 {
+  flex: 50%;
+  padding: 2rem;
+  max-width: 35rem;
+  min-width: 24rem;
+}
+
+.headline-1-1>h1 {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+}
+
+.headline-1-box {
+  padding: 1rem;
+  background-color:rgba(66, 66, 66, 0.95);
+  color: #fff;
+}
+
+.headline-2 {
+  flex: 50%;
+}
+
+.headline-1-2 {
+  /* padding: 1rem 0 1.5rem 0; */
+  color: rgba(255, 255, 255, 0.8)
+}
+
+.cta {
+  font-family: 'Playfair Display', serif;
+}
+
+.cta-sub {
+  margin-left: 0.5rem;
+}
+
+.cta-mail-outline {
+  border: 1px solid;
+  border-style: none none solid none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f44336;
+}
+
+.my-courses-span {
+  font-weight: 700;
+  font-size: larger;
+}
+
+mat-divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-courses-spacer {
+  width: 9rem;
+}

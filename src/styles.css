@@ -5,7 +5,7 @@
 /*************************** ngx-toastr **************************/
 @import 'ngx-toastr/toastr.css';
 /*************************** Fonts **************************/
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@400;600;900&family=Playfair+Display:wght@400;500;800&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:wght@400;500;800&family=Poppins&display=swap');
 
 :root {
   --font-poppins: 'Poppins', sans-serif;
@@ -39,6 +39,10 @@ body {
 }
 
 /*************************** Navbar **************************/
+
+.spacer {
+  flex: 1 1 auto;
+}
 
 .mat-toolbar .mat-form-field-wrapper {
   padding: 0;
@@ -89,3 +93,4 @@ body {
 .toast-container .ngx-toastr {
   box-shadow: none;
 }
+

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'instructors/courses/:id/update', component: EditCourseComponent },
   { path: 'card', component: CardComponent },
   { path: 'carousel', component: CarouselComponent },
-  { path: 'user/:id/course/:id2/details', component: CourseTableComponent },
+  { path: 'course/:id/details', component: CourseTableComponent },
   { path: 'user/:id/course/:id2/materials', component: MaterialTableComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent },

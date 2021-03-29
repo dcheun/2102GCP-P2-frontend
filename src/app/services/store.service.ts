@@ -20,6 +20,7 @@ export class StoreService {
   courseMaterialsSubject = new Subject<CourseMaterial[]>();
   ratingsSubject = new Subject<Rating[]>();
   loadingSubject = new Subject<boolean>();
+  searchSubject = new Subject<string>();
 
   authUser: AppUser | null = null;
   appUsers: AppUser[] = [];
@@ -28,6 +29,7 @@ export class StoreService {
   ratings: Rating[] = [];
 
   loading: boolean = false;
+  searchTerm: string = '';
 
   constructor(
     private appUserService: AppUserService,
@@ -54,6 +56,9 @@ export class StoreService {
     });
     this.loadingSubject.subscribe({
       next: (v) => (this.loading = v),
+    });
+    this.searchSubject.subscribe({
+      next: (v) => (this.searchTerm = v),
     });
     console.log('store.service - calling loadData');
     this.loadData();

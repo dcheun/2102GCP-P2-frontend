@@ -6,6 +6,7 @@ import { CourseMaterial } from 'src/app/models/course-material';
 import { Rating } from 'src/app/models/rating';
 import { AppUserService } from 'src/app/services/app-user.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { StoreService } from 'src/app/services/store.service';
 
 interface cardProps {
@@ -40,26 +41,33 @@ export class DashboardComponent implements OnInit, OnDestroy {
   courseMaterialsSub: Subscription | null = null;
   ratingsSub: Subscription | null = null;
   loadingSub: Subscription | null = null;
+  searchSub: Subscription | null = null;
 
   cardPropsArr: cardProps[] = [];
+  myCardPropsArr: cardProps[] = [];
+  disCardPropsArr: cardProps[] = [];
+  myCardPropsArrFiltered: cardProps[] = [];
+  disCardPropsArrFiltered: cardProps[] = [];
 
   buildingCardProps: boolean = false;
+  searchTerm: string = '';
+
+  bannerURL: string = '../../../assets/images/banner2.jpg';
 
   constructor(
     private appUserService: AppUserService,
     private authService: AuthService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
+    this.generateBannerImg();
     console.log('cardPropsArr.length=', this.cardPropsArr.length);
-    if (!this.authService.getToken()) {
-      return;
-    }
     this.subscribeStore();
-    if (this.courses.length !== 0) {
-      this.buildCardProps();
-    }
+    // if (this.courses.length !== 0) {
+    this.buildCardProps();
+    // }
     this.userId = this.authService.getJwtId();
     this.userRoleId = this.authService.getJwtUserRoleId();
     this.loadUser();
@@ -109,6 +117,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.storeLoading = v;
       },
     });
+    this.searchTerm = this.storeService.searchTerm;
+    this.searchSub = this.storeService.searchSubject.subscribe({
+      next: (v) => {
+        this.searchTerm = v;
+        this.search();
+      },
+    });
     console.log('after this.appUsers.length=', this.appUsers.length);
   }
 
@@ -127,6 +142,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   async loadUser(): Promise<void> {
+    this.userId = this.authService.getJwtId();
     if (!this.userId) {
       return;
     }
@@ -160,11 +176,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   buildCardProps() {
-    if (this.buildingCardProps) {
-      return;
-    }
+    // if (this.buildingCardProps) {
+    //   return;
+    // }
     console.log('dashboard - building card props');
-    this.buildingCardProps = true;
+    // this.buildingCardProps = true;
     let cardPropsArr: cardProps[] = [];
     // Create the props for passing into cards.
     this.courses.forEach((course) => {
@@ -183,7 +199,78 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     });
     this.cardPropsArr = cardPropsArr;
-    console.log(this.cardPropsArr);
-    this.buildingCardProps = false;
+
+    // Filter user courses.
+    console.log('this.authUser=', this.authUser);
+    this.myCardPropsArr = this.cardPropsArr.filter((p) => {
+      if (this.authUser?.userRoleId === 1) {
+        return this.authUser.instructorCourses.find(
+          (c) => c.id === p.course?.id
+        );
+      }
+      if (this.authUser?.userRoleId === 2) {
+        return this.authUser.studentCourses.find((c) => c.id === p.course?.id);
+      }
+      return false;
+    });
+    console.log('myCardProps=', this.myCardPropsArr);
+    // Filter for everything else.
+    this.disCardPropsArr = this.cardPropsArr.filter((p) => {
+      return !this.myCardPropsArr.find((m) => m.course?.id === p.course?.id);
+    });
+    this.myCardPropsArrFiltered = this.myCardPropsArr;
+    this.disCardPropsArrFiltered = this.disCardPropsArr;
+    console.log('disCardProps=', this.disCardPropsArr);
+    console.log('cardPropsArr=', this.cardPropsArr);
+    // this.buildingCardProps = false;
+  }
+
+  search(): void {
+    console.log('dashboard search=', this.searchTerm);
+    if (!this.searchTerm) {
+      this.myCardPropsArrFiltered = this.myCardPropsArr;
+      this.disCardPropsArrFiltered = this.disCardPropsArr;
+      return;
+    }
+    const regexp = new RegExp(this.searchTerm, 'i');
+    this.myCardPropsArrFiltered = this.myCardPropsArr.filter((p) => {
+      if (p.course) {
+        let found = p.course.courseMaterials.find((m) =>
+          regexp.test(m.description)
+        );
+        if (found) {
+          return true;
+        }
+      }
+      return (
+        regexp.test(p.instructor?.fName || '') ||
+        regexp.test(p.instructor?.lName || '') ||
+        regexp.test(p.instructor?.email || '') ||
+        regexp.test(p.course?.name || '') ||
+        regexp.test(p.course?.description || '')
+      );
+    });
+    this.disCardPropsArrFiltered = this.disCardPropsArr.filter((p) => {
+      if (p.course) {
+        let found = p.course.courseMaterials.find((m) =>
+          regexp.test(m.description)
+        );
+        if (found) {
+          return true;
+        }
+      }
+      return (
+        regexp.test(p.instructor?.fName || '') ||
+        regexp.test(p.instructor?.lName || '') ||
+        regexp.test(p.instructor?.email || '') ||
+        regexp.test(p.course?.name || '') ||
+        regexp.test(p.course?.description || '')
+      );
+    });
+  }
+
+  generateBannerImg(): void {
+    const randInt = this.sharedService.genRandomInt(1, 4);
+    this.bannerURL = `../../../assets/images/banner${randInt}.jpg`;
   }
 }

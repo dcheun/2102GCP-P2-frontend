@@ -15,11 +15,14 @@
 
       <ng-container [ngSwitch]="btnMode" *ngIf="props.authUser">
         <button mat-button class="editbtn" *ngSwitchCase="'edit'"
-          [routerLink]="['/user', props.authUser.id, 'course', props.course.id, 'update']">Edit</button>
+          [routerLink]="['/instructors', 'courses', props.course.id, 'update']">Edit</button>
         <button mat-button class="editbtn" *ngSwitchCase="'start'"
           [routerLink]="['/user', props.authUser.id, 'course', props.course.id, 'materials']">Start</button>
         <button mat-button class="editbtn" *ngSwitchDefault
-          [routerLink]="['/user', props.authUser.id, 'course', props.course.id, 'details']">View</button>
+          [routerLink]="['/course', props.course.id, 'details']">View</button>
+      </ng-container>
+      <ng-container *ngIf="!props.authUser">
+        <button mat-button class="editbtn" [routerLink]="['/course', props.course.id, 'details']">View</button>
       </ng-container>
 
     </mat-card-content>

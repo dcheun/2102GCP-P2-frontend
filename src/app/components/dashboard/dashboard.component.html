@@ -1,15 +1,75 @@
 <div class="container">
 
-  <br />
-  <br />
-  <h1>JUMBOTRON AND CALL TO ACTION HERE</h1>
-  <br />
-  <br />
-  <hr />
-  <ng-container *appTimes="3; let i = index">
-    <app-carousel [cardPropsArr]="cardPropsArr" [carouselId]="i"></app-carousel>
-    <hr />
-  </ng-container>
+  <section class="jumbotron" style="background-image: url('{{bannerURL}}');">
+    <div class="headline d-flex align-items-center justify-content-center">
+      <div class="headline-1">
+        <div class="headline-1-box">
+          <div class="headline-1-1 mb-3">
+            <h1>Welcome to <span class="font-dancing">Online Education!</span></h1>
+            <h1>Learn topics such as programming, music, and <u>science</u></h1>
+          </div>
+          <div class="headline-1-2 mb-3">
+            Browse the latest and greatest courses taught by the best in the industry!
+          </div>
+          <div class="cta">
+            <h4 class="d-flex align-items-center">
+              <a href="#" class="d-flex cta-mail-outline">
+                <mat-icon>mail_outline</mat-icon><span class="cta-sub">Subscribe</span>
+              </a>
+              <div class="flex-grow-1"></div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="headline-2"></div>
+    </div>
+  </section>
+
+  <section>
+    <mat-divider></mat-divider>
+    <div class="my-courses d-flex align-items-center justify-content-between">
+      <span class="my-courses-spacer"></span>
+      <span class="my-courses-span font-montserrat">MY COURSES</span>
+      <button *ngIf="authUser && authUser.userRoleId === 1" class="my-courses-spacer" mat-raised-button color="warn"
+        routerLink="/instructors/courses/create">+ Create Course</button>
+      <span *ngIf="!authUser || authUser.userRoleId !== 1" class="my-courses-spacer"></span>
+    </div>
+    <mat-divider></mat-divider>
+    <ng-container *ngIf="myCardPropsArrFiltered.length > 0">
+      <app-carousel [cardPropsArr]="myCardPropsArrFiltered" [carouselId]="999"></app-carousel>
+    </ng-container>
+    <ng-container *ngIf="authUser && myCardPropsArrFiltered.length === 0 && !searchTerm">
+      <div class="text-center">
+        <span class="">You do not have any courses... Enroll now!</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="authUser && myCardPropsArrFiltered.length === 0 && searchTerm">
+      <div class="text-center">
+        <span class="">No Results Found</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!authUser">
+      <div class="text-center">
+        <span class="">Sign In now to access your courses!</span>
+      </div>
+    </ng-container>
+    <mat-divider class="discover-courses"></mat-divider>
+    <div class="my-courses text-center">
+      <span class="my-courses-span font-montserrat">DISCOVER COURSES</span>
+    </div>
+    <mat-divider></mat-divider>
+    <ng-container *ngIf="disCardPropsArrFiltered.length > 0">
+      <ng-container *appTimes="2; let i = index">
+        <app-carousel [cardPropsArr]="disCardPropsArrFiltered" [carouselId]="i"></app-carousel>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="disCardPropsArrFiltered.length === 0 && searchTerm">
+      <div class="text-center">
+        <span class="">No Results Found</span>
+      </div>
+    </ng-container>
+  </section>
 
 </div>
 

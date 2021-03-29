@@ -1,0 +1,28 @@
+<mat-card class="course-card">
+  <img mat-card-image class="course-card-thumb" [src]="imgURL" alt="course thumbnail">
+
+  <ng-container *ngIf="props && props.course">
+    <mat-card-title>{{ props.course && props.course.name }}</mat-card-title>
+    <mat-card-subtitle>
+      {{ props.instructor && props.instructor.fName }}
+      {{ props.instructor && props.instructor.lName }}
+    </mat-card-subtitle>
+
+    <hr />
+
+    <mat-card-content class="d-flex align-items-center justify-content-between">
+      <app-rating [rating]="props.courseRating" [totalRating]="props.courseTotalRating"></app-rating>
+
+      <ng-container [ngSwitch]="btnMode" *ngIf="props.authUser">
+        <button mat-button class="editbtn" *ngSwitchCase="'edit'"
+          [routerLink]="['/user', props.authUser.id, 'course', props.course.id, 'update']">Edit</button>
+        <button mat-button class="editbtn" *ngSwitchCase="'start'"
+          [routerLink]="['/user', props.authUser.id, 'course', props.course.id, 'materials']">Start</button>
+        <button mat-button class="editbtn" *ngSwitchDefault
+          [routerLink]="['/user', props.authUser.id, 'course', props.course.id, 'details']">View</button>
+      </ng-container>
+
+    </mat-card-content>
+  </ng-container>
+
+</mat-card>

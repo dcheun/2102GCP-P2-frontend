@@ -1,0 +1,121 @@
+
+
+<div>
+    <div class="sidenav" style="left: 80%;padding-top: 7%;width: 300px;text-align: center;background-color:rgb(65, 63, 87)">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" style="width: 300px;height:100px;font-size: 1.8em;"type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+               Introduction
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="width: 300px;">
+              <li><button (click)="videoFile()" class="dropdown-item" type="button">Welcome</button></li>
+              <li><button class="dropdown-item" type="button">Best Practices to Succeed</button></li>
+              <li><button class="dropdown-item" type="button">Learning Outcome</button></li>
+            </ul>
+          </div>
+          <br>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" style="width: 300px;height:100px;font-size: 1.8em;"type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            Lecture Videos
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="width: 300px;">
+          <li><button (click)="videoFile()"class="dropdown-item" type="button">Refresh</button></li>
+          <li><button class="dropdown-item" type="button">Lecture (1-5)</button></li>
+          <li><button class="dropdown-item" type="button">Lecture (6-10)</button></li>
+        </ul>
+      </div>
+      <br>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" style="width: 300px;height:100px;font-size: 1.8em;"type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            Documents
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="width: 300px;">
+          <li><button (click)="pdFile()" class="dropdown-item" type="button">Warm Ups</button></li>
+          <li><button class="dropdown-item" type="button">Challenge Project</button></li>
+          <li><button class="dropdown-item" type="button">Course Reviewv PDF</button></li>
+        </ul>
+      </div>
+
+    
+    </div>
+    <h1  style="text-align:center; padding-top: 80px;padding-right: 450px;font-family: 'Lobster', cursive;font-size: 40px;">Welcome to the {{courseName}} Course</h1>
+    <div style="padding-right: 375px; padding-left: 100px;padding-top: 50px;" id="material">
+
+          <div *ngIf="file==p">
+            <pdf-viewer [src]="pdfSource"
+              [original-size]="false"
+              ></pdf-viewer>
+            </div>
+
+            <div *ngIf="file==v">
+              <youtube-player 
+                  videoId="GYAB4Td62zI" 
+                  suggestedQuality="highres" 
+                  [height]="500" 
+                  [width]="750" 
+                  [startSeconds]="4"
+                  [endSeconds]="8"
+                  style="padding-left:100px;">
+            </youtube-player>
+          </div>
+
+    </div>
+    <div style="padding-right: 20%; padding-top: 0%;padding-bottom: 7%;">
+      <div class='card' style="background-color:gray">
+          <div class='card-body'>
+            <div class='row'>
+              <div class='col-md-8'>
+                <div class='row' style="padding-left: 250px; text-align: center;">
+                  <mat-card-header>
+                      <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+                   </mat-card-header> 
+                   <br>
+                   <mat-card-title></mat-card-title>
+      
+                   <mat-card-title style="padding-top: 50px;font-size: 2.5em;font-family: 'Merienda', cursive;">*{{courseName}}*</mat-card-title>
+                   <mat-card-subtitle style="font-size: 1.5em;padding-top: 20px;font-family: 'Merienda', cursive;">Instructor: {{instructorfName}} {{instructorlName}}</mat-card-subtitle>      
+                 
+                   <mat-card-footer>
+                     <mat-card-subtitle></mat-card-subtitle>
+                   </mat-card-footer>
+                   <hr>
+                   <br>
+                   <hr>
+                </div><br>
+                
+               
+                <div class='row' style="padding-left:300px; font-family: 'Merienda', cursive;">
+                   <h2 style="color:black; text-align: center;font-family: 'Merienda', cursive;"><u>Course Description</u></h2>
+                   <summary style="color:black;font-family: 'Merienda', cursive;">{{description}}</summary>
+                  <summary  style="color:black">Be able to build ANY website you want.
+                      Craft a portfolio of websites to apply for junior developer jobs.
+                      Build fully-fledged websites and web apps for your startup or business.
+                      Work as a freelance web developer.
+                      Master backend development with Node
+                      Master frontend development with React
+                      Learn the latest frameworks and technologies, including Javascript ES6, Bootstrap 4, MongoDB.</summary>
+                      <summary  style="color:black">Be able to build ANY website you want.
+                          Craft a portfolio of websites to apply for junior developer jobs.
+                          Build fully-fledged websites and web apps for your startup or business.
+                          Work as a freelance web developer.
+                          Master backend development with Node
+                          Master frontend development with React
+                          Learn the latest frameworks and technologies, including Javascript ES6, Bootstrap 4, MongoDB.</summary>
+                </div>
+                
+              </div>
+        
+              <div class='col-md-4'>
+              
+              </div>
+            </div>
+          </div>
+      </div>
+
+          <div class='card-footer' style="padding-left: 700px;">
+            <p>dsd</p>
+            <app-rate-course [(rate)]="ratingInputNumber"></app-rate-course>
+            {{ratingInputNumber}}
+            
+          </div>
+        </div>
+      

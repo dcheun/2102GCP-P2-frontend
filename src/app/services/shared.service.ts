@@ -8,7 +8,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SharedService {
-  BASE_URL: string = 'http://localhost:8080';
+  BASE_URL: string = 'http://javalin-1.duckdns.org:8080';
 
   constructor() {}
+
+  /**
+   * Returns a random integer between start (inclusive) and end (inclusive).
+   */
+  genRandomInt(start: number, end: number): number {
+    start = Math.ceil(start);
+    end = Math.floor(end);
+    return Math.floor(Math.random() * (end - start + 1)) + start;
+  }
 }

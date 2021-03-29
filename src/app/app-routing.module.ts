@@ -1,3 +1,5 @@
+import { EditCourseComponent } from './edit-course/edit-course.component';
+import { AddmaterialComponent } from './create-course/create-course.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CardComponent } from './components/card/card.component';
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'instructors/courses/create', component: AddmaterialComponent },
+  { path: 'instructors/courses/:id/update', component: EditCourseComponent },
   { path: 'card', component: CardComponent },
   { path: 'carousel', component: CarouselComponent },
   { path: 'user/:id/course/:id2/details', component: CourseTableComponent },

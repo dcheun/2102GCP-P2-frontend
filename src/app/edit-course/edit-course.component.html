@@ -1,0 +1,60 @@
+<div id="body">
+    <!-- <h3>Course Materials for Course id: {{courseId}}</h3>
+    <mat-list role="list">
+        <mat-list-item role="listitem"*ngFor="let m of courseMaterials">{{"Id: "+m.id+" Material Type: "+m.materialType+" Description: "+m.description}}</mat-list-item>
+    </mat-list> -->
+    <table>
+        <caption>Create Update and Delete Course id: {{courseId}}</caption>
+        <thead><tr><th>Id</th><th>Material Type</th><th>Description</th><th>Update</th><th>Delete</th><th><button (click)="displayAddForm()">+</button></th></tr></thead>
+        <tbody>
+            <tr *ngFor="let m of courseMaterials">
+                <td>{{m.id}}</td>
+                <td>{{m.materialType}}</td>
+                <td>{{m.description}}</td>
+                <td><button (click)="displayUpdateForm(m.id)">update</button></td>
+                <td><button (click)="deleteMaterial(m.id)">delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form #updateMaterialForm ="ngForm"(ngSubmit)="updateCourseMaterial(updateMaterialForm.value)"class="example-form materialform" [class.matformdisplay]="displayUpdateMaterialForm">
+        <h3>Update Course Material id: {{materialIdToBeUpdated}}</h3>
+        <mat-form-field appearance="fill"class="example-full-width">
+            <mat-label>Material Description</mat-label>
+            <textarea matInput ngModel name="description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill"class="example-full-width">
+            <mat-label>Material Type</mat-label>
+            <mat-select ngModel name="materialType">
+              <mat-option value="video">Video</mat-option>
+              <mat-option value="document">Document</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        <div class="example-button-row">
+            <button mat-button >Save</button> 
+        </div>
+      </form>
+
+      <form #addMaterialForm ="ngForm"(ngSubmit)="addCourseMaterial(addMaterialForm.value)"class="example-form materialform" [class.matformdisplay]="displayAddMaterialForm">
+        <h3 >Add Course Materials </h3>
+        <mat-form-field appearance="fill"class="example-full-width">
+            <mat-label>Material Description</mat-label>
+            <textarea matInput ngModel name="description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill"class="example-full-width">
+            <mat-label>Material Type</mat-label>
+            <mat-select ngModel name="materialType">
+              <mat-option value="video">Video</mat-option>
+              <mat-option value="document">Document</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        <div class="example-button-row">
+            <button mat-button >Save</button> 
+        </div>
+      </form>
+
+
+</div>
+

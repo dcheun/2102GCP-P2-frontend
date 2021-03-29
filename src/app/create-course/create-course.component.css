@@ -1,0 +1,73 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    background-color: rgb(116, 110, 110); 
+    
+    
+  }
+  .body{
+    /* text-align: center;
+    align-items: center;
+    align-content: center; */
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 30px;
+    
+  }
+  
+  .example-full-width {
+    width: 100%;
+    
+  }
+  .materialform{
+    display:none
+  }
+  .matformdisplay{
+    display: block;
+  }
+  .courseform{
+    display:none
+  }
+  .courseformdisplay{
+    display:block
+  }
+  .materiallist{
+    display: none;
+  }
+  .displaymateriallist{
+    display: block;
+  }
+  form{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    color: white;
+  }
+  .mat-form-field{
+    border-radius: 5px;
+    background-color:rgb(103, 66, 112);
+  }
+  .example-button-row{
+    border-radius: 5px;
+    text-align: center;
+    background-color:rgb(163, 51, 120) ;
+    color: white;
+  }
+  form>h3{
+    border-radius: 5px;
+    padding: 5px;
+    background-color:rgb(163, 51, 120) ;
+    text-align: center;
+  }
+  .listtitle{
+    color: rgb(230, 132, 192);
+  }
+  li{
+    color: rgb(218, 163, 197);;
+  }
+  /* :host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  } */

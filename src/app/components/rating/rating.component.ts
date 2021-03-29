@@ -1,3 +1,5 @@
+import { Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,6 +12,9 @@ export class RatingComponent implements OnInit {
 
   @Input() rating:number=0;
   @Input() totalRating:number=0;
+  @Output()rateChange = new EventEmitter<number>();
+
+
   
   isRate1:boolean[]=[false,false,false,false,false];
   

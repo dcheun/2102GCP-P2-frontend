@@ -112,10 +112,42 @@
       </div>
 
           <div class='card-footer' style="padding-left: 700px;">
-            <p>dsd</p>
-            <app-rate-course [(rate)]="ratingInputNumber"></app-rate-course>
-            {{ratingInputNumber}}
             
+
+          </div>
+          <div  style="height:300px; background-color:gray"> 
+            
+            <div *ngIf="checkRated==notRated">
+
+            <p style="font-size: 25px;padding-left:200px;">Rate:</p>
+            <app-rate-course [(rate)]="ratingInputNumber" style="padding-left: 200px ;"> 
+            </app-rate-course>
+              
+            <div class="mb-3" style="padding-left: 200px;padding-right: 200px;padding-top: 30px ;">
+              <p style="font-size: 25px;padding-right:20px;">Comment:</p>
+              <label for="exampleFormControlTextarea1" class="form-label" style="font-size: 25px;padding-right:300px;"></label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"[(ngModel)]="rateComment"></textarea>
+              <br>
+              <button (click)="createRating()" style="left: 200px;" type="button" class="btn btn-dark">Submit</button>
+            </div>
+
+          </div>
+
+          <div  *ngIf="checkRated==alreadyRated">
+            <p style="font-size: 25px;padding-left:200px;">Rate:</p>
+            <app-rating [rating]="ratingInputNumber" style="padding-left: 200px ;"[totalRating]="ratingInputNumber"> 
+            </app-rating>
+              
+            <div class="mb-3" style="padding-left: 200px;padding-right: 200px;padding-top: 30px ;">
+              <p style="font-size: 25px;padding-right:20px;">Comment:</p>
+              <label for="exampleFormControlTextarea1" class="form-label" style="font-size: 25px;padding-right:300px;"></label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"[(ngModel)]="rateComment" style="background-color:chocolate;"></textarea>
+              
+          </div>
+
+          </div>
+          <div>
+            <!-- <app-rating [(rating)]="ratingInputNumber"></app-rating> -->
           </div>
         </div>
       

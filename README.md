@@ -1,27 +1,33 @@
-# Onlineeducationfrontend
+# Online Education - Front end
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+This is the front end for Revature's 2102 Java GCP curriculum - Project 2. It is built to the specifications outlined below. 
 
-## Development server
+Online Education is an online platform that allows instructors to create courses and students to search for and enroll in courses.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Only registered users can login and create or enroll in courses. Users can sign up via the sign up page and select if they want to be an instructor or a student. Once the user logs in they are redirected to the main dashboard. From the main dashboard users can view their courses and list of all other available courses are presented in a bottom section. There is a search bar at the top where they can search for courses.
 
-## Code scaffolding
+For instructors, they have a button that will allow them to create new courses or edit an existing one. Each course can have many course materials. Once this is saved, the course will be added to their MY COURSES section.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For students, they can enroll in a course by viewing it in the details page and clicking on Enroll. Students can start a course to begin viewing course materials. In this view they can also rate and leave comments for the courses they take.
 
-## Build
+Non-registered users are free to browse available courses on the platform and view it's details.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Technical Specifications
 
-## Running unit tests
+The front end is written using the Angular Framework and created using Angular CLI. There is a separate repository for the backend.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## API Specifications
 
-## Running end-to-end tests
+This project utilizes the corresponding backend API for full functionality. JWTs are created and stored locally. They are used to make authorized requests to the backend. When a user logs out, the JWT is deleted from local storage.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Deployment - GCP and Firebase
 
-## Further help
+- Frontend is deployed via firebase hosting
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Usage and installation
+
+This project can be installed by cloning the repository, running npm install and ng serve to start the development server.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
